@@ -1,0 +1,111 @@
+﻿<Window x:Class="WPF_TESTing_5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_TESTing_5"
+        mc:Ignorable="d"
+        Title="MyBooks" Height="585" Width="767">
+    <Grid Margin="10,10,0,-6">
+        <TabControl Margin="0,0,10,10">
+            <TabItem Header="Просмотр">
+                <Grid Background="#FF98E8E8" Height="539" Margin="0,0,-23,0" OpacityMask="#FF2979D0">
+
+                    <Label Content="Данные" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="405" Width="600
+                           " x:Name="labelTable"/>
+                    <ListView Background="#FF82D8EB"  x:Name="listviewitem"   Margin="0,0,26,124">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Id}" Width="35">Id</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding TheBookName}" Width="150">Название книги</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding TheBookAuthor}" Width="150">Автор</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding TheBookNumberOfPages}" Width="200">Количество страниц</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding TheBookValuation}" Width="100">Оценка</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button Content="Поиск" HorizontalAlignment="Right" Margin="0,0,26,48" VerticalAlignment="Bottom" Height="26" Width="121" x:Name="SEARCHbutton" Click="SEARCHbutton_Click"/>
+                    <ComboBox HorizontalAlignment="Right" Margin="0,0,331,48" VerticalAlignment="Bottom" Width="140" Height="24" x:Name="comboSearch">
+                        <TextBlock>Id</TextBlock>
+                        <TextBlock>Название книги</TextBlock>
+                        <TextBlock>Автор</TextBlock>
+                        <TextBlock>Количество страниц</TextBlock>
+                        <TextBlock>Оценка</TextBlock>
+                    </ComboBox>
+                    <TextBox HorizontalAlignment="Right" Margin="0,0,171,48" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="155" Height="24" x:Name="textSearch"/>
+                    <Label Content="" HorizontalAlignment="Left" Margin="0,0,0,50" VerticalAlignment="Bottom" Height="47" Width="222" x:Name="labelCOUNT"/>
+                    <CheckBox Content="доп. поиск" IsChecked ="False" HorizontalAlignment="Right" Margin="0,0,44,60" VerticalAlignment="Bottom" Height="40" Width="85" x:Name="checkBoxSearch" Checked="checkBoxSearch_Checked" Unchecked="checkBox_Unchecked" Indeterminate="checkBox_Indeterminate"/>
+                    <ComboBox HorizontalAlignment="Right" Margin="0,0,330,78" VerticalAlignment="Bottom" Width="140" Height="24" x:Name="comboSearch_Second">
+                        <TextBlock><Run Text="Id"/></TextBlock>
+                        <TextBlock><Run Text="Название книги"/></TextBlock>
+                        <TextBlock><Run Text="Автор"/></TextBlock>
+                        <TextBlock><Run Text="Количество страниц"/></TextBlock>
+                        <TextBlock><Run Text="Оценка"/></TextBlock>
+                    </ComboBox>
+                    <TextBox HorizontalAlignment="Right" Margin="0,0,170,78" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="155" Height="24" x:Name="textSearch_Second"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Добавление">
+                <Grid Background="#FF84E87F">
+                    <TextBox HorizontalAlignment="Left" Margin="30,23,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25" x:Name="textTheBookName"/>
+                    <TextBox HorizontalAlignment="Left" Margin="30,68,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25" x:Name="textTheBookAuthor"/>
+                    <TextBox HorizontalAlignment="Left" Margin="30,108,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25" x:Name="textTheBookNumberOfPages"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="30,156,0,0" VerticalAlignment="Top" Width="150" Height="25" x:Name="comboTheBookValuation">
+                        <TextBlock>Плохо</TextBlock>
+                        <TextBlock>Нормально</TextBlock>
+                        <TextBlock>Хорошо</TextBlock>
+                        <TextBlock>Шедевр</TextBlock>
+                    </ComboBox>
+
+                    <Button Content="Добавить" HorizontalAlignment="Left" Margin="30,207,0,0" VerticalAlignment="Top" Height="57" Width="150" x:Name="buttonAdd" Click="buttonAdd_Click_1"/>
+                    <Button Content="Случайное заполнение" HorizontalAlignment="Left" Margin="198,207,0,0" VerticalAlignment="Top" Height="57" Width="150" x:Name="buttonRandom" Click="buttonRandom_Click"/>
+                    <Button Content="Очистить" HorizontalAlignment="Left" Margin="198,132,0,0" VerticalAlignment="Top" Height="57" Width="150" x:Name="addButtonClear" Click="addButtonClear_Click"/>
+
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Удаление">
+                <Grid Background="#FFE89393" Margin="0,0,4,3">
+                    <TextBox HorizontalAlignment="Left" Margin="212,210,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="189" Height="32" x:Name="textDelete"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="72,210,0,0" VerticalAlignment="Top" Width="120" Height="32" x:Name="comboFORdelete">
+                        <TextBlock>Id</TextBlock>
+                        <TextBlock>Название книги</TextBlock>
+                        <TextBlock>Автор</TextBlock>
+                        <TextBlock>Количество страниц</TextBlock>
+                        <TextBlock>Оценка</TextBlock>
+                    </ComboBox>
+
+                    <Button Content="Удалить" HorizontalAlignment="Right" Margin="0,210,160,0" VerticalAlignment="Top" Height="32" Width="131" x:Name="DeleteButton" Click="DeleteButton_Click"/>
+                    <Button Content="Очистить" HorizontalAlignment="Right" Margin="0,262,160,0" VerticalAlignment="Top" Height="32" Width="131" x:Name="DeleteTextClear" Click="DeleteTextClear_Click"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Редактирование">
+                <Grid Background="#FFECED8B" Margin="0,0,4,3">
+                    <ComboBox HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top" Width="154" Height="38" x:Name="comboIN">
+                        <TextBlock>Id</TextBlock>
+                        <TextBlock>Название книги</TextBlock>
+                        <TextBlock>Автор</TextBlock>
+                        <TextBlock>Количество страниц</TextBlock>
+                        <TextBlock>Оценка</TextBlock>
+                    </ComboBox>
+                    <ComboBox HorizontalAlignment="Right" Margin="0,278,174,0" VerticalAlignment="Top" Width="154" Height="38" x:Name="comboOUT">
+                        <TextBlock>Название книги</TextBlock>
+                        <TextBlock>Автор</TextBlock>
+                        <TextBlock>Количество страниц</TextBlock>
+                        <TextBlock>Оценка</TextBlock>
+                    </ComboBox>
+                    <TextBox HorizontalAlignment="Left" Margin="169,106,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="147" Height="37" x:Name="textupdateIN"/>
+                    <TextBox HorizontalAlignment="Right" Margin="0,279,10,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="147" Height="37" x:Name="textupdateOUT"/>
+                    <Button Content="Изменить" HorizontalAlignment="Center" Margin="0,184,0,0" VerticalAlignment="Top" Height="62" Width="202" x:Name="buttonUPDATE" Click="buttonUPDATE_Click"/>
+                    <Button Content="Очистить" HorizontalAlignment="Left" Margin="587,184,0,0" VerticalAlignment="Top" Height="31" Width="133" x:Name="updateClearButton" Click="updateClearButton_Click"/>
+
+                </Grid>
+            </TabItem>
+
+
+        </TabControl>
+
+    </Grid>
+</Window>
